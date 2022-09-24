@@ -48,13 +48,13 @@ model.fit(trainBatches, epochs=1)# [!] change num of epochs, to increase accurac
 model.save('my_model.h5')
 dirName = os.path.dirname(os.path.abspath(__file__))
 try:
-	os.mkdirs(f"{dirName}/infected", exist_ok=True)
+	os.mkdir(f"{dirName}/infected")
 
 except Exception as err:
 	print("Failed make the folder")
 
 for i in range(11):
-	img = load_img(f"{dirName}/{i+1}.jpg")
+	img = load_img(f"{dirName}/imgs/{i+1}.jpg")
 
 	imgArray = img_to_array(img)
 	imgResized, _ = resizeImg(imgArray, _)
@@ -67,7 +67,7 @@ for i in range(11):
 		plt.title(f"{WhatIsLabel} {prediction}")
 		plt.savefig(f"{dirName}/infected/{i+1}.jpg") #saves infected
 		
-plt.show() #shows photos
+#plt.show() #shows photos
 
 """
 tensorflow - Google
